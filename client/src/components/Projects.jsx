@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   FolderGit2, 
   Github, 
   CheckCircle2, 
   ArrowUpRight,
   Radio,
-  Cpu
+  Cpu,
+  Eye
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { ProjectPreviewModal } from './ProjectPreviewModal';
+import { chatsappScreenshots } from '../data/chatsappScreenshots';
 
 export const Projects = () => {
   const { projects } = portfolioData;
   const project = projects[0];
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   if (!project) return null;
 
@@ -38,22 +42,35 @@ export const Projects = () => {
         <div className="max-w-4xl mx-auto mb-10">
           <div className="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-300 relative border border-slate-200/80 dark:border-slate-800">
             <div>
-              {/* Category & GitHub Link */}
-              <div className="flex items-center justify-between gap-2 mb-4">
+              {/* Category & Action Buttons */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-cyan-50 dark:bg-cyan-950/70 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/80">
                   {project.category}
                 </span>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 text-xs font-medium transition-colors shadow-sm"
-                  title="View Source on GitHub"
-                >
-                  <Github size={14} />
-                  <span>GitHub Repository</span>
-                  <ArrowUpRight size={13} />
-                </a>
+                
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsPreviewOpen(true)}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:shadow-cyan-500/20 cursor-pointer"
+                    title="Preview ChatsApp screenshots and output"
+                  >
+                    <Eye size={14} />
+                    <span>Project Preview</span>
+                  </button>
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 text-xs font-medium transition-colors shadow-sm"
+                    title="View Source on GitHub"
+                  >
+                    <Github size={14} />
+                    <span>GitHub Repository</span>
+                    <ArrowUpRight size={13} />
+                  </a>
+                </div>
               </div>
 
               {/* Title & Tagline */}
@@ -77,6 +94,33 @@ export const Projects = () => {
                     <span>{hl}</span>
                   </div>
                 ))}
+              </div>
+
+              {/* Interactive Preview Banner */}
+              <div 
+                onClick={() => setIsPreviewOpen(true)}
+                className="mb-6 p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-slate-100/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-500/60 cursor-pointer flex items-center justify-between group transition-all duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-white transition-all">
+                    <Eye size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                      Live Output Preview Walkthrough
+                      <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-700 dark:text-cyan-300">
+                        14 Screenshots
+                      </span>
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Step-by-step output flow: Registration, Login, Chat, Group creation & Real-time sync.
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden sm:flex items-center gap-1 text-xs font-semibold text-cyan-600 dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform">
+                  <span>Explore Preview</span>
+                  <ArrowUpRight size={14} />
+                </div>
               </div>
             </div>
 
@@ -134,6 +178,14 @@ export const Projects = () => {
         </div>
 
       </div>
+
+      {/* Project Screenshots Preview Modal */}
+      <ProjectPreviewModal
+        isOpen={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+        projectTitle="ChatsApp"
+        screenshots={chatsappScreenshots}
+      />
     </section>
   );
 };
