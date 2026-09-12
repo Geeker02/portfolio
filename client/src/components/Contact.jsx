@@ -8,16 +8,12 @@ import {
   Github, 
   Loader2, 
   CheckCircle2, 
-  AlertCircle, 
-  Server, 
-  Sparkles 
+  AlertCircle 
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
-import { useKeepAliveWarm } from '../hooks/useKeepAliveWarm';
 
 export const Contact = () => {
   const { candidate } = portfolioData;
-  const { backendStatus } = useKeepAliveWarm();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -28,14 +24,14 @@ export const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState(null); // { type: 'success' | 'error', message: string }
+  const [toast, setToast] = useState(null);
 
   const validateForm = () => {
     const errs = {};
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!formData.name.trim() || formData.name.trim().length < 2) {
-      errs.name = 'Please enter your name (at least 2 characters).';
+      errs.name = 'Please enter your name.';
     }
 
     if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
@@ -43,11 +39,11 @@ export const Contact = () => {
     }
 
     if (!formData.subject.trim() || formData.subject.trim().length < 3) {
-      errs.subject = 'Subject should be at least 3 characters.';
+      errs.subject = 'Please enter a subject.';
     }
 
     if (!formData.message.trim() || formData.message.trim().length < 10) {
-      errs.message = 'Please write a message with at least 10 characters.';
+      errs.message = 'Message should be at least 10 characters.';
     }
 
     setErrors(errs);
@@ -83,19 +79,19 @@ export const Contact = () => {
       if (response.ok && data.success) {
         setToast({
           type: 'success',
-          message: data.message || 'Message successfully sent! I will respond promptly.'
+          message: 'Thank you for reaching out! Your message was sent successfully.'
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         setToast({
           type: 'error',
-          message: data.message || 'Failed to dispatch message. Please try again.'
+          message: data.message || 'Unable to send message right now. Feel free to email me directly!'
         });
       }
     } catch (err) {
       setToast({
         type: 'error',
-        message: 'Network error communicating with the backend. Feel free to contact me directly at ' + candidate.email
+        message: 'Could not connect to the server. You can always email me directly at ' + candidate.email
       });
     } finally {
       setIsSubmitting(false);
@@ -110,66 +106,71 @@ export const Contact = () => {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Mail size={14} />
-            <span>Get in Touch</span>
+            <span>Contact</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Let's Build Something Exceptional
+            Get in Touch
           </h2>
           <div className="w-16 h-1 bg-cyan-500 rounded-full mt-3 mb-4" />
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-sm sm:text-base">
-            I am available for full-time Software Engineering roles. Feel free to send a message or contact me directly.
+          <p className="text-slate-600 dark:text-slate-400 max-w-xl text-sm sm:text-base">
+            I'm currently looking for full-time Software Engineering roles. Whether you have an opportunity, a question, or just want to connect, my inbox is always open.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto items-start">
           
-          {/* Left Column: Direct Contact Info & System Health Badge */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-6">
-            <div className="glass-card p-6 sm:p-8 rounded-2xl">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
-                Direct Contact Channels
-              </h3>
+          {/* Left Column: Direct Contact Info */}
+          <div className="lg:col-span-5">
+            <div className="glass-card p-6 sm:p-8 rounded-2xl h-full flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
+                  Let's Connect
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                  Feel free to reach out directly via email, phone, or through LinkedIn and GitHub.
+                </p>
 
-              <div className="space-y-5">
-                <a
-                  href={`mailto:${candidate.email}`}
-                  className="flex items-start gap-3.5 group p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-400 font-mono block">EMAIL</span>
-                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-cyan-500 transition-colors">
-                      {candidate.email}
-                    </span>
-                  </div>
-                </a>
+                <div className="space-y-4">
+                  <a
+                    href={`mailto:${candidate.email}`}
+                    className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors group border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                      <Mail size={17} />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-mono text-slate-400 block uppercase">Email</span>
+                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 group-hover:text-cyan-500 transition-colors">
+                        {candidate.email}
+                      </span>
+                    </div>
+                  </a>
 
-                <a
-                  href={`tel:${candidate.phone}`}
-                  className="flex items-start gap-3.5 group p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Phone size={18} />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-400 font-mono block">PHONE / WHATSAPP</span>
-                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-cyan-500 transition-colors">
-                      {candidate.formattedPhone}
-                    </span>
-                  </div>
-                </a>
+                  <a
+                    href={`tel:${candidate.phone}`}
+                    className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors group border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                      <Phone size={17} />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-mono text-slate-400 block uppercase">Phone</span>
+                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 group-hover:text-cyan-500 transition-colors">
+                        {candidate.formattedPhone}
+                      </span>
+                    </div>
+                  </a>
 
-                <div className="flex items-start gap-3.5 p-2 rounded-xl">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
-                    <MapPin size={18} />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-400 font-mono block">LOCATION</span>
-                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">
-                      {candidate.location}
-                    </span>
+                  <div className="flex items-center gap-3.5 p-3 rounded-xl">
+                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                      <MapPin size={17} />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-mono text-slate-400 block uppercase">Location</span>
+                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200">
+                        {candidate.location}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -180,9 +181,9 @@ export const Contact = () => {
                   href={candidate.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-700"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-700"
                 >
-                  <Github size={16} />
+                  <Github size={15} />
                   <span>GitHub</span>
                 </a>
 
@@ -190,46 +191,19 @@ export const Contact = () => {
                   href={candidate.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-700"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-700"
                 >
-                  <Linkedin size={16} />
+                  <Linkedin size={15} />
                   <span>LinkedIn</span>
                 </a>
               </div>
-            </div>
-
-            {/* Free-Tier Infrastructure Live Status Card (FREE-02) */}
-            <div className="glass-card p-5 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2 font-mono font-semibold text-slate-700 dark:text-slate-300">
-                  <Server size={14} className="text-cyan-500" />
-                  <span>REST API Heartbeat</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span
-                    className={`w-2 h-2 rounded-full ${
-                      backendStatus === 'online'
-                        ? 'bg-emerald-500 animate-pulse'
-                        : backendStatus === 'cold-starting'
-                        ? 'bg-amber-500 animate-bounce'
-                        : 'bg-cyan-500 animate-ping'
-                    }`}
-                  />
-                  <span className="font-mono text-[11px] text-slate-500 capitalize">
-                    {backendStatus === 'online' ? 'Warm / Ready' : backendStatus === 'cold-starting' ? 'Waking container...' : 'Prefetched'}
-                  </span>
-                </div>
-              </div>
-              <p className="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
-                Render free-tier cold start mitigation is active. Backend container is automatically warmed in background.
-              </p>
             </div>
           </div>
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <div className="glass-card p-6 sm:p-8 rounded-2xl shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Send a Message
               </h3>
 
@@ -257,9 +231,9 @@ export const Contact = () => {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                      className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5"
                     >
-                      YOUR NAME *
+                      Your Name
                     </label>
                     <input
                       id="name"
@@ -267,8 +241,8 @@ export const Contact = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Sarah Connor"
-                      className={`w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all ${
+                      placeholder="Jane Doe"
+                      className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all ${
                         errors.name
                           ? 'border-rose-500'
                           : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
@@ -283,9 +257,9 @@ export const Contact = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                      className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5"
                     >
-                      YOUR EMAIL *
+                      Your Email
                     </label>
                     <input
                       id="email"
@@ -293,8 +267,8 @@ export const Contact = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="e.g. recruiter@company.com"
-                      className={`w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all ${
+                      placeholder="jane@company.com"
+                      className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all ${
                         errors.email
                           ? 'border-rose-500'
                           : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
@@ -310,9 +284,9 @@ export const Contact = () => {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                    className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5"
                   >
-                    SUBJECT *
+                    Subject
                   </label>
                   <input
                     id="subject"
@@ -320,8 +294,8 @@ export const Contact = () => {
                     type="text"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="e.g. Software Engineer Opportunity: Java / Spring Boot"
-                    className={`w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all ${
+                    placeholder="Role Opportunity: Java / Spring Boot Engineer"
+                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all ${
                       errors.subject
                         ? 'border-rose-500'
                         : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
@@ -336,9 +310,9 @@ export const Contact = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                    className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5"
                   >
-                    MESSAGE *
+                    Message
                   </label>
                   <textarea
                     id="message"
@@ -346,8 +320,8 @@ export const Contact = () => {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Hi Jaydeep, we reviewed your work and would love to schedule a conversation..."
-                    className={`w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all resize-none ${
+                    placeholder="Hi Jaydeep, I came across your portfolio and would like to talk about a role..."
+                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all resize-none ${
                       errors.message
                         ? 'border-rose-500'
                         : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
@@ -367,11 +341,11 @@ export const Contact = () => {
                   {isSubmitting ? (
                     <>
                       <Loader2 size={16} className="animate-spin" />
-                      <span>Dispatching Message...</span>
+                      <span>Sending...</span>
                     </>
                   ) : (
                     <>
-                      <Send size={16} />
+                      <Send size={15} />
                       <span>Send Message</span>
                     </>
                   )}

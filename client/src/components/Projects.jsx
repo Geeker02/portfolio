@@ -3,42 +3,38 @@ import {
   FolderGit2, 
   Github, 
   CheckCircle2, 
-  Layers, 
-  Activity, 
   ArrowUpRight,
-  ShieldCheck,
-  MessageSquare,
-  Database,
-  Radio
+  Radio,
+  Cpu
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Projects = () => {
   const { projects } = portfolioData;
-  const project = projects[0]; // Spotlight personal project (ChatsApp)
+  const project = projects[0];
 
   if (!project) return null;
 
   return (
-    <section id="projects" className="py-20 relative bg-slate-100/50 dark:bg-slate-900/30">
+    <section id="projects" className="py-20 relative bg-slate-100/40 dark:bg-slate-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <FolderGit2 size={14} />
-            <span>Personal Software Engineering Project</span>
+            <FolderGit2 size={13} />
+            <span>Featured Project</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Featured Full-Stack Project
+            What I've Built
           </h2>
           <div className="w-16 h-1 bg-cyan-500 rounded-full mt-3 mb-4" />
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-sm sm:text-base">
-            Deep-dive into full-stack real-time messaging, WebSocket STOMP protocol, Spring Security stateless JWT authentication, and relational schema optimization.
+          <p className="text-slate-600 dark:text-slate-400 max-w-xl text-sm sm:text-base">
+            An in-depth look at ChatsApp, a full-stack real-time messaging application engineered with Spring Boot, WebSockets, and React.
           </p>
         </div>
 
-        {/* Spotlight Project Card */}
+        {/* Main Project Card */}
         <div className="max-w-4xl mx-auto mb-10">
           <div className="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-300 relative border border-slate-200/80 dark:border-slate-800">
             <div>
@@ -51,11 +47,11 @@ export const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 text-xs font-semibold transition-colors shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 text-xs font-medium transition-colors shadow-sm"
                   title="View Source on GitHub"
                 >
-                  <Github size={15} />
-                  <span>View on GitHub</span>
+                  <Github size={14} />
+                  <span>GitHub Repository</span>
                   <ArrowUpRight size={13} />
                 </a>
               </div>
@@ -65,7 +61,7 @@ export const Projects = () => {
                 {project.title}
               </h3>
 
-              <p className="text-sm font-mono text-cyan-600 dark:text-cyan-400 mb-4">
+              <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium mb-4">
                 {project.tagline}
               </p>
 
@@ -77,7 +73,7 @@ export const Projects = () => {
               <div className="space-y-3 mb-6">
                 {project.highlights.map((hl, hIdx) => (
                   <div key={hIdx} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
-                    <CheckCircle2 size={17} className="text-cyan-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={16} className="text-cyan-500 shrink-0 mt-0.5" />
                     <span>{hl}</span>
                   </div>
                 ))}
@@ -87,7 +83,7 @@ export const Projects = () => {
             {/* Tech Stack Pills */}
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700/60">
               <span className="text-xs font-mono text-slate-400 block mb-2 font-semibold uppercase tracking-wider">
-                Full-Stack Architecture & Dependencies
+                Technologies & Libraries
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {project.techStack.map((tech, idx) => (
@@ -103,18 +99,18 @@ export const Projects = () => {
           </div>
         </div>
 
-        {/* Architectural Blueprint Breakdown */}
+        {/* Architecture Breakdown */}
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card p-6 sm:p-8 rounded-2xl border border-cyan-500/30 shadow-lg">
-            <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/60">
-              <Activity size={18} className="text-cyan-500" />
+          <div className="glass-card p-6 sm:p-8 rounded-2xl border border-cyan-500/20 shadow-md">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/60">
+              <Cpu size={18} className="text-cyan-500" />
               <div>
-                <span className="text-xs font-mono text-cyan-600 dark:text-cyan-400 font-semibold block uppercase">
-                  Systems Architecture
-                </span>
-                <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                  ChatsApp Layer Breakdown & Data Flow
+                <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                  System Architecture & Data Flow
                 </h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  How components communicate across the client, authentication layer, and database.
+                </p>
               </div>
             </div>
 
@@ -123,13 +119,12 @@ export const Projects = () => {
               {project.architecture.map((layer, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between"
+                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between"
                 >
-                  <div className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400 mb-1.5 flex items-center justify-between">
-                    <span>{layer.layer}</span>
-                    <span className="text-[10px] text-slate-400">Layer 0{idx + 1}</span>
+                  <div className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 mb-1.5">
+                    {layer.layer}
                   </div>
-                  <p className="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                     {layer.details}
                   </p>
                 </div>

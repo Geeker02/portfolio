@@ -3,11 +3,8 @@ import {
   Server, 
   Layers, 
   CheckCircle2, 
-  ShieldCheck, 
   Workflow, 
-  Cpu, 
-  Terminal, 
-  GitPullRequest 
+  User
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -17,27 +14,27 @@ export const About = () => {
   const pillars = [
     {
       icon: Server,
-      title: 'Enterprise Java & Spring Boot',
+      title: 'Backend & APIs',
       description:
-        'Architecting robust, low-latency RESTful APIs and microservices using Spring Boot, Spring MVC, and Spring Data JPA with modular separation of concerns.'
+        'Designing modular RESTful services and microservices using Core Java, Spring Boot, and Spring Data JPA.'
     },
     {
       icon: Layers,
-      title: 'OOP & SOLID Architecture',
+      title: 'Clean Architecture',
       description:
-        'Translating complex business domains into clean, maintainable class hierarchies adhering to Single Responsibility, Open/Closed, and Dependency Inversion.'
+        'Structuring codebases with proven OOP patterns, SOLID principles, and clear domain boundaries.'
     },
     {
-      icon: ShieldCheck,
-      title: 'TDD & JUnit Quality Assurance',
+      icon: CheckCircle2,
+      title: 'Testing & Reliability',
       description:
-        'Writing comprehensive unit and integration test suites using JUnit to prevent regressions, safeguard critical contracts, and guarantee deployable code.'
+        'Writing automated unit and integration tests with JUnit to catch regressions early and ensure stability.'
     },
     {
       icon: Workflow,
-      title: 'Agile & Full-Stack Delivery',
+      title: 'Full Stack & Delivery',
       description:
-        'Collaborating across cross-functional teams, CI/CD with GitHub Actions, and bridging performant backends with reactive, modern React.js frontends.'
+        'Bridging server services with modern React frontends, automated with GitHub Actions CI/CD pipelines.'
     }
   ];
 
@@ -48,36 +45,34 @@ export const About = () => {
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Terminal size={14} />
-            <span>Engineering Profile</span>
+            <User size={13} />
+            <span>About Me</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            About Me & Engineering Focus
+            Background & Philosophy
           </h2>
           <div className="w-16 h-1 bg-cyan-500 rounded-full mt-3" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start max-w-6xl mx-auto">
           
           {/* Bio Description Box */}
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="glass-card p-6 sm:p-8 rounded-2xl shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
-                Software Engineer with a Backend-First Mindset
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4">
+                Engineering with a clean-code mindset
               </h3>
               
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-sm sm:text-base">
-                I am a dedicated Full-Stack Software Engineer with specialized hands-on production experience in 
-                <strong className="text-slate-900 dark:text-white"> Core Java, Spring Boot, and enterprise RESTful services</strong>.
-                Currently working as a <strong className="text-cyan-600 dark:text-cyan-400">Full Stack Developer at CCTech</strong>, 
-                I focus on architecting resilient distributed systems, developing C# automation plugins for CAD systems, writing test-driven code, and building high-performance backend services.
+                I am a Software Engineer based in Pune, currently working as a <strong className="text-cyan-600 dark:text-cyan-400">Full Stack Developer at CCTech</strong>. My work focuses on building custom C# automation plugins for CAD systems (AutoCAD, Autodesk Inventor), designing Spring Boot backend services, and building responsive React visualizations.
               </p>
 
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-sm sm:text-base">
-                My software engineering foundations are backed by solving <strong className="text-cyan-600 dark:text-cyan-400">400+ algorithmic problems on LeetCode</strong> and holding a 
-                <strong className="text-cyan-600 dark:text-cyan-400"> 5-Star Problem Solving badge on HackerRank</strong>. I combine this algorithmic discipline with 
-                clean design patterns (Factory, Strategy, Observer, Repository) to build systems that scale gracefully.
+                I believe that good software architecture is about clarity, testability, and maintainability. I regularly write unit tests with JUnit, follow SOLID design principles, and favor clean separation of concerns over premature complexity.
+              </p>
+
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-sm sm:text-base">
+                Competitive programming has been an important part of honing my engineering instincts. Solving <strong className="text-slate-900 dark:text-white">400+ problems on LeetCode</strong> and earning a <strong className="text-slate-900 dark:text-white">5-Star rating on HackerRank</strong> has trained me to analyze computational trade-offs and edge cases carefully.
               </p>
 
               <div className="pt-4 border-t border-slate-200 dark:border-slate-700/60 grid grid-cols-2 gap-4 text-xs font-mono">
@@ -93,7 +88,7 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Core Pillars 2x2 Grid */}
+          {/* Pillars 2x2 Grid */}
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
