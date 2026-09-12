@@ -1,220 +1,147 @@
-# Jaydeep Jogdand – Full-Stack Developer Portfolio
+# Jaydeep Jogdand – Personal Developer Portfolio
 
-> **Candidate:** Jaydeep Jogdand  
-> **Role:** Software Engineer | Core Java & Spring Boot Developer  
-> **Tech Stack:** React.js, Tailwind CSS, Lucide Icons, Node.js, Express, Helmet, Nodemailer  
+A full-stack personal developer portfolio web application built with **React.js**, **Tailwind CSS**, and a **Node.js / Express** REST API backend. It showcases my engineering experience at **CCTech**, my full-stack projects including **ChatsApp**, my problem-solving track record on LeetCode and HackerRank, and my academic background.
 
 ---
 
-## 1. Project Overview
+## Tech Stack
 
-A production-grade, responsive full-stack developer portfolio showcasing Jaydeep's work at **CCTech** (Enterprise CAD Automation, Spring Boot REST services, React visualization), **ChatsApp** (Spring Boot WebSocket STOMP real-time messaging, Spring Security JWT), 400+ LeetCode DSA problem solutions, and 9.04 CGPA academic background.
-
-The application is architected to run permanently on **100% free-tier cloud infrastructure** ($0.00/month) with zero runtime fees while mitigating free-tier cold-starts.
+- **Frontend:** React 18, Vite, Tailwind CSS, Lucide Icons
+- **Backend:** Node.js, Express, Helmet, CORS, Express Rate Limit, Nodemailer
+- **Core Engineering:** Core Java, Spring Boot, RESTful Services, OOP & SOLID principles
 
 ---
 
-## 2. System Architecture & Zero-Cost Topology
+## Key Features
+
+- **Modern Responsive UI:** Designed for mobile, tablet, and desktop with a smooth collapsible navigation drawer.
+- **Theme Switcher:** Dark and Light mode toggle with automatic preference persistence.
+- **Professional Experience:** Detailed breakdown of work at CCTech, including CAD automation plugins and Spring Boot backend services.
+- **Personal Project Spotlight:** In-depth showcase of **ChatsApp** featuring WebSocket STOMP messaging, Spring Security JWT authentication, and an interactive 5-layer architecture breakdown.
+- **Competitive Programming:** Verified milestones on LeetCode (400+ problems solved) and HackerRank (5-Star in Problem Solving).
+- **In-Browser Resume Viewer:** Integrated PDF preview modal with direct one-click download.
+- **Contact Form with Input Validation:** Sanitized, rate-limited form with real-time feedback and asynchronous submission.
+
+---
+
+## Architecture & Data Flow
 
 ```
-                       [ Recruiter Enters Portfolio ]
-                                      │
-                                      ▼
-                       ┌──────────────────────────────┐
-                       │    React.js SPA (Vercel)     │
-                       │  - Global Edge CDN           │
-                       │  - Instant 0ms Cold Start    │
-                       └──────────────┬───────────────┘
-                                      │
-                  ┌───────────────────┴───────────────────┐
-                  │ (1) Immediate Prefetch Ping            │ (2) Form Submission
-                  │     GET /api/v1/health                │     POST /api/v1/contact
-                  ▼                                       ▼
- ┌────────────────────────────────────────────────────────────────────────┐
- │                      Node.js / Express (Render.com)                    │
- │   - Awakened proactively in background while recruiter reads Hero      │
- │   - Rate-Limited, Helmet & CORS Hardened                               │
- └────────────────────────────────────┬───────────────────────────────────┘
-                                      │
-                                      ▼
-                       ┌──────────────────────────────┐
-                       │    Transactional SMTP Relay   │
-                       │     (Gmail App Password)     │
-                       └──────────────┬───────────────┘
-                                      │
-                                      ▼
-                       [ Inbound Email to Jaydeep ]
-                      (jaydeepjogdand@gmail.com)
-
- ┌────────────────────────────────────────────────────────────────────────┐
- │ Heartbeat Keeper: External Cron-Job (UptimeRobot / cron-job.org)       │
- │ Fires HTTP GET /api/v1/health every 14 mins to keep container warm     │
- └────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┐
+│     React.js Client     │ ───► User Interface, State Management & PDF Preview
+└────────────┬────────────┘
+             │
+             │ HTTP REST Requests (JSON)
+             ▼
+┌─────────────────────────┐
+│   Node.js / Express API │ ───► Security Headers, Input Sanitization & Rate Limiting
+└────────────┬────────────┘
+             │
+             │ SMTP Relay
+             ▼
+┌─────────────────────────┐
+│      Email Service      │ ───► Direct delivery of messages to inbox
+└─────────────────────────┘
 ```
 
 ---
 
-## 3. Directory Layout
+## Project Structure
 
 ```
 portfolio/
-├── client/                     # React 18 + Vite + Tailwind CSS
-│   ├── public/
-│   │   └── Jaydeep_Jogdand_Resume.pdf  # Static resume asset (instant download)
+├── client/                 # React frontend application
+│   ├── public/             # Static assets & Resume PDF
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── Navbar.jsx              # Responsive nav, mobile drawer, dark/light switch
-│   │   │   ├── Hero.jsx                # Recruiter intro, badges, CTAs, metrics
-│   │   │   ├── About.jsx               # Engineering philosophy (OOP, SOLID, JUnit, Agile)
-│   │   │   ├── Skills.jsx              # Interactive categorized tech grid & badges
-│   │   │   ├── Experience.jsx          # CCTech full-stack history & CAD automation
-│   │   │   ├── Projects.jsx            # ChatsApp deep-dive & architectural blueprint
-│   │   │   ├── Achievements.jsx        # LeetCode 400+ DSA & HackerRank 5-Star
-│   │   │   ├── Education.jsx           # B.E. 9.04 CGPA, Diploma, High School
-│   │   │   ├── Contact.jsx             # Validated contact form + wake status
-│   │   │   ├── ResumeModal.jsx         # In-browser PDF previewer & download
-│   │   │   └── Footer.jsx              # Zero-cost cloud badge & copyright
-│   │   ├── context/
-│   │   │   └── ThemeContext.jsx        # Dark/Light theme with localStorage
-│   │   ├── hooks/
-│   │   │   └── useKeepAliveWarm.js     # Non-blocking prefetch hook (FREE-02)
-│   │   ├── data/
-│   │   │   └── portfolioData.js        # Centralized resume dataset
+│   │   ├── components/     # UI components (Navbar, Hero, Experience, Projects, etc.)
+│   │   ├── context/        # Theme context (Dark / Light mode)
+│   │   ├── data/           # Portfolio metadata and resume content
+│   │   ├── hooks/          # Custom React hooks
 │   │   ├── App.jsx
-│   │   ├── index.css
 │   │   └── main.jsx
 │   ├── package.json
 │   └── vite.config.js
 │
-├── server/                     # Node.js + Express REST API
-│   ├── controllers/
-│   │   └── portfolioController.js      # Health, metadata, contact mailer, resume stream
-│   ├── middleware/
-│   │   ├── rateLimiter.js              # 3 req/10 min rate limit for contact (SEC-03)
-│   │   └── sanitize.js                 # Input sanitization & XSS protection (SEC-04)
-│   ├── routes/
-│   │   └── apiRoutes.js                # /api/v1/...
-│   ├── services/
-│   │   └── mailService.js              # Nodemailer with Gmail/Brevo support + mock logger
-│   ├── public/
-│   │   └── Jaydeep_Jogdand_Resume.pdf  # PDF streamed via GET /api/v1/resume
-│   ├── server.js                       # Express app with Helmet, CORS whitelist
-│   ├── .env.example
+├── server/                 # Express backend API
+│   ├── controllers/        # Request handlers (portfolio data, contact, resume)
+│   ├── middleware/         # Rate limiting and input sanitization
+│   ├── routes/             # REST endpoints (/api/v1/...)
+│   ├── services/           # Nodemailer email dispatch service
+│   ├── server.js           # Express application entry point
 │   └── package.json
 │
-└── package.json                # Root orchestrator scripts
+└── package.json            # Workspace scripts
 ```
 
 ---
 
-## 4. Local Development Setup
+## Getting Started
 
 ### Prerequisites
-- Node.js >= 18.0.0
-- npm >= 9.0.0
+- Node.js (v18 or higher)
+- npm
 
-### Steps
-1. Open a terminal in `e:\SpringBoot\portfolio`:
-   ```bash
-   # 1. Install dependencies for both client and server:
-   npm run install:all
-   ```
+### Installation
+Clone the repository and install dependencies:
 
-2. Start the backend REST API:
+```bash
+git clone https://github.com/Geeker02/portfolio.git
+cd portfolio
+
+# Install dependencies for both client and server
+npm run install:all
+```
+
+### Running Locally
+
+1. **Start the backend server:**
    ```bash
    npm run dev:server
-   # Runs on http://localhost:5000
+   # Server runs on http://localhost:5000
    ```
 
-3. Start the frontend React app in another terminal:
+2. **Start the frontend client:**
    ```bash
    npm run dev:client
-   # Runs on http://localhost:5173
+   # Client runs on http://localhost:5173
    ```
 
-4. Open your browser at `http://localhost:5173`.
-   - Contact form submissions will be securely validated and logged to the server console in development mode (if SMTP is unconfigured) or dispatched via email (if SMTP is configured).
+---
+
+## REST API Endpoints
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/health` | Service health check and uptime monitor |
+| `GET` | `/api/v1/portfolio` | Structured JSON portfolio metadata |
+| `POST` | `/api/v1/contact` | Validated contact form submission |
+| `GET` | `/api/v1/resume` | Streams resume PDF document |
 
 ---
 
-## 5. 100% Free Cloud Deployment Guide
+## Environment Variables
 
-### A. Deploy Backend to Render.com (100% Free)
-1. Push your repository to GitHub (`https://github.com/Geeker02/portfolio`).
-2. Log in to [Render.com](https://render.com) (sign in with GitHub).
-3. Click **New +** -> **Web Service**.
-4. Select your GitHub repository.
-5. Fill in the configuration:
-   - **Name:** `jaydeep-portfolio-api`
-   - **Root Directory:** `server`
-   - **Environment:** `Node`
-   - **Build Command:** `npm install`
-   - **Start Command:** `node server.js`
-   - **Instance Type:** `Free` (0.1 CPU, 512 MB RAM)
-6. Add **Environment Variables** in Render's dashboard:
-   - `NODE_ENV` = `production`
-   - `PORT` = `5000`
-   - `FRONTEND_URL` = `https://your-portfolio.vercel.app` (update once frontend is deployed)
-   - `SMTP_HOST` = `smtp.gmail.com`
-   - `SMTP_PORT` = `587`
-   - `SMTP_USER` = `jaydeepjogdand@gmail.com`
-   - `SMTP_PASS` = `<Your-16-Character-Google-App-Password>`
-   - `RECEIVER_EMAIL` = `jaydeepjogdand@gmail.com`
-7. Click **Create Web Service**. Note your Render URL (e.g. `https://jaydeep-portfolio-api.onrender.com`).
+To configure the backend email service, create a `.env` file in the `server` directory based on `.env.example`:
+
+```env
+PORT=5000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:5173
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@example.com
+SMTP_PASS=your_email_password
+RECEIVER_EMAIL=your_email@example.com
+```
+
+*(During local development, if SMTP credentials are left blank, submitted messages will safely log to the server console).*
 
 ---
 
-### B. Eliminate Render Cold-Starts (Free Keep-Alive Setup)
-Free Render containers sleep after 15 minutes of inactivity. To keep it 100% warm 24/7 without paying:
-1. Go to [UptimeRobot.com](https://uptimerobot.com) (free plan: 50 monitors).
-2. Click **Add New Monitor**:
-   - **Monitor Type:** `HTTP(s)`
-   - **Friendly Name:** `Portfolio API Keep-Alive`
-   - **URL (or IP):** `https://jaydeep-portfolio-api.onrender.com/api/v1/health`
-   - **Monitoring Interval:** Every `14 minutes`
-3. Save. UptimeRobot will ping your `/health` endpoint every 14 minutes, preventing Render from ever sleeping!
+## Author
 
----
-
-### C. Deploy Frontend to Vercel (100% Free)
-1. Go to [Vercel.com](https://vercel.com) and log in with GitHub.
-2. Click **Add New...** -> **Project**.
-3. Import your portfolio repository.
-4. In the project setup:
-   - **Root Directory:** click Edit and select `client`
-   - **Framework Preset:** `Vite`
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-5. Configure Rewrites/Environment:
-   - To route `/api` directly to your Render backend without CORS overhead, create `client/vercel.json`:
-     ```json
-     {
-       "rewrites": [
-         {
-           "source": "/api/:path*",
-           "destination": "https://jaydeep-portfolio-api.onrender.com/api/:path*"
-         }
-       ]
-     }
-     ```
-6. Click **Deploy**. Your portfolio will go live on Vercel's global CDN within 30 seconds!
-
----
-
-### D. Generating a Google App Password for Email Dispatch
-1. Open your Google Account: [https://myaccount.google.com/security](https://myaccount.google.com/security).
-2. Ensure **2-Step Verification** is enabled.
-3. Search for **App Passwords** in the search bar.
-4. Enter an app name (e.g. `Portfolio Contact Form`).
-5. Copy the generated 16-character password and paste it into `SMTP_PASS` in your Render Environment Variables.
-
----
-
-## 6. REST API Endpoints Specification
-
-| Method | Endpoint | Description | Rate Limit |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/v1/health` | Uptime check & client warming ping | Unlimited |
-| `GET` | `/api/v1/portfolio` | Full structured JSON resume data | 60 req/min |
-| `POST` | `/api/v1/contact` | Validated contact form submission | 3 req/10 min |
-| `GET` | `/api/v1/resume` | Streams `Jaydeep_Jogdand_Resume.pdf` | 10 req/min |
+**Jaydeep Jogdand**  
+Software Engineer | Core Java & Spring Boot Developer  
+- GitHub: [@Geeker02](https://github.com/Geeker02)  
+- LinkedIn: [jaydeep-jogdand](https://www.linkedin.com/in/jaydeep-jogdand)  
+- Email: [jaydeepjogdand@gmail.com](mailto:jaydeepjogdand@gmail.com)
