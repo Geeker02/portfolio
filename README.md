@@ -2,7 +2,6 @@
 
 > **Candidate:** Jaydeep Jogdand  
 > **Role:** Software Engineer | Core Java & Spring Boot Developer  
-> **Document Reference:** SRS v2.1.0 (Zero-Cost Hosting Architecture)  
 > **Tech Stack:** React.js, Tailwind CSS, Lucide Icons, Node.js, Express, Helmet, Nodemailer  
 
 ---
