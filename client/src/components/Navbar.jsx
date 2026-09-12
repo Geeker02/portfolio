@@ -65,7 +65,7 @@ export const Navbar = ({ onOpenResume }) => {
               Jaydeep Jogdand
             </span>
             <span className="text-[11px] font-mono font-medium text-cyan-600 dark:text-cyan-400">
-              Spring Boot & Java Engineer
+              Software Developer
             </span>
           </div>
         </a>
