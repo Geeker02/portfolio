@@ -96,11 +96,7 @@ export const Skills = () => {
                     {group.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono transition-all ${
-                          skill.highlight
-                            ? 'bg-cyan-50 dark:bg-cyan-950/70 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/80 font-medium'
-                            : 'bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60'
-                        }`}
+                        className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-cyan-50/80 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200/80 dark:border-cyan-800/80 hover:border-cyan-500/60 transition-all duration-200"
                       >
                         {skill.name}
                       </span>
