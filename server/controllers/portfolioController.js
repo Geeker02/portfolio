@@ -172,7 +172,11 @@ export const submitContact = async (req, res) => {
 
 // GET /api/v1/resume (Streams resume PDF)
 export const getResume = (req, res) => {
-  const resumePath = path.resolve(__dirname, '../public/Jaydeep_Jogdand_Resume.pdf');
+  let resumePath = path.resolve(__dirname, '../public/Jaydeep_Jogdand_Software_Developer.pdf');
+
+  if (!fs.existsSync(resumePath)) {
+    resumePath = path.resolve(__dirname, '../public/Jaydeep_Jogdand_Resume.pdf');
+  }
 
   if (!fs.existsSync(resumePath)) {
     return res.status(404).json({
@@ -182,7 +186,7 @@ export const getResume = (req, res) => {
   }
 
   res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', 'inline; filename="Jaydeep_Jogdand_Resume.pdf"');
+  res.setHeader('Content-Disposition', 'inline; filename="Jaydeep_Jogdand_Software_Developer.pdf"');
 
   const fileStream = fs.createReadStream(resumePath);
   fileStream.pipe(res);

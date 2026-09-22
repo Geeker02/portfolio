@@ -24,15 +24,15 @@ export const ResumeModal = ({ isOpen, onClose }) => {
 
           <div className="flex items-center gap-2">
             <a
-              href="/Jaydeep_Jogdand_Resume.pdf"
-              download="Jaydeep_Jogdand_Resume.pdf"
+              href="/Jaydeep_Jogdand_Software_Developer.pdf"
+              download="Jaydeep_Jogdand_Software_Developer.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition-colors shadow-sm"
             >
               <Download size={14} />
               Download PDF
             </a>
             <a
-              href="/Jaydeep_Jogdand_Resume.pdf"
+              href="/Jaydeep_Jogdand_Software_Developer.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -53,8 +53,8 @@ export const ResumeModal = ({ isOpen, onClose }) => {
         {/* PDF Viewer Embed */}
         <div className="flex-1 w-full bg-slate-100 dark:bg-slate-950 p-1">
           <iframe
-            src="/Jaydeep_Jogdand_Resume.pdf#toolbar=1"
-            title="Jaydeep Jogdand Resume PDF"
+            src="/Jaydeep_Jogdand_Software_Developer.pdf#toolbar=1"
+            title="Jaydeep Jogdand Software Developer Resume"
             className="w-full h-full rounded-lg border-0"
           />
         </div>
