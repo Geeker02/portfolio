@@ -190,7 +190,6 @@ export const portfolioData = {
       institution: "PCET's Nutan Maharashtra Institute of Engineering and Technology, Pune",
       period: 'Dec 2021 – May 2024',
       grade: 'CGPA: 9.04 / 10.0',
-      badge: 'Distinction',
       details: 'Courses: Algorithms, Database Management Systems, Object-Oriented Programming, Operating Systems, Computer Networks.'
     },
     {
@@ -198,7 +197,6 @@ export const portfolioData = {
       institution: 'Government Polytechnic, Pune',
       period: 'Aug 2018 – Jul 2021',
       grade: 'Percentage: 88.87%',
-      badge: 'Distinction',
       details: 'Courses: Data Structures, C/C++, Java Programming, Relational Databases, Computer Architecture.'
     },
     {
@@ -206,8 +204,7 @@ export const portfolioData = {
       institution: 'Z.P. High School, Takalsing',
       period: 'Jun 2017 – Mar 2018',
       grade: 'Percentage: 94.00%',
-      badge: 'First Class',
-      details: 'Strong foundational academics with high distinction in Mathematics and Science.'
+      details: 'Strong foundational academics with high achievement in Mathematics and Science.'
     }
   ]
 };

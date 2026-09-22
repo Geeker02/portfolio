@@ -36,9 +36,11 @@ export const Education = () => {
                   <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                     {item.degree}
                   </h3>
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/80">
-                    {item.badge}
-                  </span>
+                  {item.badge && (
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/80">
+                      {item.badge}
+                    </span>
+                  )}
                 </div>
 
                 <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
