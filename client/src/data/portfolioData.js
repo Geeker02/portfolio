@@ -7,7 +7,7 @@ export const portfolioData = {
     email: 'jaydeepjogdand@gmail.com',
     phone: '8459697079',
     formattedPhone: '+91 8459697079',
-    linkedin: 'https://www.linkedin.com/in/jaydeep-jogdand',
+    linkedin: 'https://www.linkedin.com/in/jaydeep-jogdand-951b84232',
     github: 'https://github.com/Geeker02',
     leetcode: 'https://leetcode.com/u/Geeker02',
     location: 'Pune, Maharashtra, India',

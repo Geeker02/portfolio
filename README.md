@@ -143,5 +143,5 @@ RECEIVER_EMAIL=your_email@example.com
 **Jaydeep Jogdand**  
 Software Engineer | Core Java & Spring Boot Developer  
 - GitHub: [@Geeker02](https://github.com/Geeker02)  
-- LinkedIn: [jaydeep-jogdand](https://www.linkedin.com/in/jaydeep-jogdand)  
+- LinkedIn: [jaydeep-jogdand](https://www.linkedin.com/in/jaydeep-jogdand-951b84232)  
 - Email: [jaydeepjogdand@gmail.com](mailto:jaydeepjogdand@gmail.com)
