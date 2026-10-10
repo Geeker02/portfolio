@@ -17,7 +17,7 @@ export const App = () => {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0f19] dark:text-slate-100 transition-colors duration-300 relative selection:bg-cyan-500 selection:text-white">
+      <div className="min-h-screen bg-[#fafafa] text-slate-900 dark:bg-[#090d16] dark:text-slate-100 transition-colors duration-200 relative selection:bg-slate-900 selection:text-white dark:selection:bg-white dark:selection:text-slate-900">
         
         {/* Navigation Bar */}
         <Navbar onOpenResume={() => setResumeModalOpen(true)} />

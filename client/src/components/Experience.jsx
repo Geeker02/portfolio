@@ -10,47 +10,48 @@ export const Experience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Briefcase size={14} />
-            <span>Career History</span>
-          </div>
+        <div className="flex flex-col items-center text-center mb-14">
+          <span className="text-xs font-mono font-medium tracking-widest text-slate-400 dark:text-slate-500 uppercase mb-2">
+            03 / Experience
+          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Professional Experience
+            Work Experience
           </h2>
-          <div className="w-16 h-1 bg-cyan-500 rounded-full mt-3" />
+          <p className="text-slate-600 dark:text-slate-400 max-w-xl text-sm sm:text-base mt-2">
+            Engineering CAD automations, backend microservices, and client visualization tools.
+          </p>
         </div>
 
         {/* Experience Cards */}
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-6">
           {experience.map((item) => (
             <div
               key={item.id}
-              className="glass-card p-6 sm:p-8 rounded-2xl relative border-l-4 border-l-cyan-500 shadow-md"
+              className="surface-card p-6 sm:p-8 rounded-2xl relative"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex flex-wrap items-center gap-2">
                     <span>{item.role}</span>
                     <span className="text-slate-400 font-normal">at</span>
-                    <span className="text-cyan-600 dark:text-cyan-400">{item.company}</span>
+                    <span className="text-slate-900 dark:text-white font-bold">{item.company}</span>
                   </h3>
                   {item.summary && (
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
                       {item.summary}
                     </p>
                   )}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-500 dark:text-slate-400 shrink-0">
-                  <div className="flex items-center gap-1">
-                    <Calendar size={13} />
+                <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-500 dark:text-slate-400 shrink-0">
+                  <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-[#0c1017] border border-slate-200 dark:border-slate-800 flex items-center gap-1.5">
+                    <Calendar size={12} />
                     <span>{item.period}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MapPin size={13} />
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <MapPin size={12} />
                     <span>{item.location}</span>
-                  </div>
+                  </span>
                 </div>
               </div>
 
@@ -58,22 +59,22 @@ export const Experience = () => {
               <ul className="space-y-3 mb-6">
                 {item.bullets.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex items-start gap-2.5 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                    <CheckCircle2 size={18} className="text-cyan-500 shrink-0 mt-1" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-500 shrink-0 mt-2.5" />
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
 
               {/* Tech Stack Pills */}
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-700/60">
-                <span className="text-xs font-mono text-slate-400 block mb-2 font-semibold uppercase tracking-wider">
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span className="text-xs font-mono text-slate-400 dark:text-slate-500 block mb-2 font-semibold uppercase tracking-wider">
                   Technologies Employed
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {item.techStack.map((tech, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono bg-cyan-50 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60"
+                      className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-100/80 dark:bg-[#0c1017] text-slate-700 dark:text-slate-300 border border-slate-200/90 dark:border-slate-800"
                     >
                       {tech}
                     </span>

@@ -103,44 +103,42 @@ export const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Mail size={14} />
-            <span>Contact</span>
+        <div className="mb-12 max-w-2xl">
+          <div className="text-xs font-mono font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">
+            07 / Contact
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
             Get in Touch
           </h2>
-          <div className="w-16 h-1 bg-cyan-500 rounded-full mt-3 mb-4" />
-          <p className="text-slate-600 dark:text-slate-400 max-w-xl text-sm sm:text-base">
-            I'm currently looking for full-time Software Engineering roles. Whether you have an opportunity, a question, or just want to connect, my inbox is always open.
+          <p className="text-slate-600 dark:text-slate-400 text-base mt-2">
+            I'm currently open to full-time Software Engineering roles and technical conversations. Reach out directly or send a message below.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl items-start">
           
           {/* Left Column: Direct Contact Info */}
           <div className="lg:col-span-5">
-            <div className="glass-card p-6 sm:p-8 rounded-2xl h-full flex flex-col justify-between">
+            <div className="surface-card p-6 sm:p-8 rounded-xl h-full flex flex-col justify-between">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
-                  Let's Connect
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                  Contact Details
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
                   Feel free to reach out directly via email, phone, or through LinkedIn and GitHub.
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <a
                     href={`mailto:${candidate.email}`}
-                    className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors group border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+                    className="flex items-center gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/60 transition-colors group border border-transparent hover:border-slate-200 dark:hover:border-slate-800"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 transition-colors">
                       <Mail size={17} />
                     </div>
                     <div>
                       <span className="text-[11px] font-mono text-slate-400 block uppercase">Email</span>
-                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 group-hover:text-cyan-500 transition-colors">
+                      <span className="text-xs sm:text-sm font-medium text-slate-900 dark:text-slate-100 group-hover:underline">
                         {candidate.email}
                       </span>
                     </div>
@@ -148,26 +146,26 @@ export const Contact = () => {
 
                   <a
                     href={`tel:${candidate.phone}`}
-                    className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors group border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+                    className="flex items-center gap-3.5 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/60 transition-colors group border border-transparent hover:border-slate-200 dark:hover:border-slate-800"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 transition-colors">
                       <Phone size={17} />
                     </div>
                     <div>
                       <span className="text-[11px] font-mono text-slate-400 block uppercase">Phone</span>
-                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 group-hover:text-cyan-500 transition-colors">
+                      <span className="text-xs sm:text-sm font-medium text-slate-900 dark:text-slate-100 group-hover:underline">
                         {candidate.formattedPhone}
                       </span>
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-3.5 p-3 rounded-xl">
-                    <div className="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-3.5 p-3 rounded-lg border border-transparent">
+                    <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0">
                       <MapPin size={17} />
                     </div>
                     <div>
                       <span className="text-[11px] font-mono text-slate-400 block uppercase">Location</span>
-                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200">
+                      <span className="text-xs sm:text-sm font-medium text-slate-900 dark:text-slate-100">
                         {candidate.location}
                       </span>
                     </div>
@@ -176,12 +174,12 @@ export const Contact = () => {
               </div>
 
               {/* Social Buttons */}
-              <div className="pt-6 mt-6 border-t border-slate-200 dark:border-slate-700/60 flex items-center gap-3">
+              <div className="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
                 <a
                   href={candidate.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-700"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3.5 rounded-lg bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-800 shadow-xs"
                 >
                   <Github size={15} />
                   <span>GitHub</span>
@@ -191,7 +189,7 @@ export const Contact = () => {
                   href={candidate.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-700"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3.5 rounded-lg bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-xs transition-colors border border-slate-200 dark:border-slate-800 shadow-xs"
                 >
                   <Linkedin size={15} />
                   <span>LinkedIn</span>
@@ -202,24 +200,24 @@ export const Contact = () => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-6 sm:p-8 rounded-2xl shadow-sm">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-6">
+            <div className="surface-card p-6 sm:p-8 rounded-xl">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-6">
                 Send a Message
               </h3>
 
               {/* Toast Feedback */}
               {toast && (
                 <div
-                  className={`p-4 rounded-xl mb-6 flex items-start gap-3 text-sm animate-fadeIn ${
+                  className={`p-4 rounded-lg mb-6 flex items-start gap-3 text-sm animate-fadeIn ${
                     toast.type === 'success'
-                      ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-800'
-                      : 'bg-rose-50 dark:bg-rose-950/60 text-rose-800 dark:text-rose-200 border border-rose-300 dark:border-rose-800'
+                      ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-850'
+                      : 'bg-rose-50 dark:bg-rose-950/60 text-rose-800 dark:text-rose-200 border border-rose-300 dark:border-rose-850'
                   }`}
                 >
                   {toast.type === 'success' ? (
-                    <CheckCircle2 size={18} className="text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={18} className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   ) : (
-                    <AlertCircle size={18} className="text-rose-500 shrink-0 mt-0.5" />
+                    <AlertCircle size={18} className="text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
                   )}
                   <p>{toast.message}</p>
                 </div>
@@ -242,10 +240,10 @@ export const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Jaydeep Jogdand"
-                      className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all ${
+                      className={`w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-slate-900/80 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition-all ${
                         errors.name
                           ? 'border-rose-500'
-                          : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
+                          : 'border-slate-200 dark:border-slate-800 focus:border-slate-400'
                       }`}
                     />
                     {errors.name && (
@@ -268,10 +266,10 @@ export const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="jaydeep@company.com"
-                      className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all ${
+                      className={`w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-slate-900/80 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition-all ${
                         errors.email
                           ? 'border-rose-500'
-                          : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
+                          : 'border-slate-200 dark:border-slate-800 focus:border-slate-400'
                       }`}
                     />
                     {errors.email && (
@@ -295,10 +293,10 @@ export const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Role Opportunity: Java / Spring Boot Engineer"
-                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all ${
+                    className={`w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-slate-900/80 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition-all ${
                       errors.subject
                         ? 'border-rose-500'
-                        : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
+                        : 'border-slate-200 dark:border-slate-800 focus:border-slate-400'
                     }`}
                   />
                   {errors.subject && (
@@ -321,10 +319,10 @@ export const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Hi Jaydeep, I came across your portfolio and would like to talk about a role..."
-                    className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all resize-none ${
+                    className={`w-full px-3.5 py-2.5 rounded-lg bg-white dark:bg-slate-900/80 border text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition-all resize-none ${
                       errors.message
                         ? 'border-rose-500'
-                        : 'border-slate-300 dark:border-slate-700 focus:border-cyan-500'
+                        : 'border-slate-200 dark:border-slate-800 focus:border-slate-400'
                     }`}
                   />
                   {errors.message && (
@@ -336,7 +334,7 @@ export const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-cyan-500 hover:bg-cyan-600 disabled:opacity-60 text-white font-semibold text-sm shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all cursor-pointer disabled:cursor-not-allowed"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 disabled:opacity-60 text-white dark:text-slate-950 font-semibold text-sm shadow-xs transition-all cursor-pointer disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

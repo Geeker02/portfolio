@@ -13,11 +13,11 @@ export const ResumeModal = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
-              <FileText size={20} />
+            <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+              <FileText size={18} />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 dark:text-white">Jaydeep Jogdand - Resume</h3>
+              <h3 className="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Jaydeep Jogdand - Resume</h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">Software Engineer | Core Java & Spring Boot Developer</p>
             </div>
           </div>
@@ -26,7 +26,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             <a
               href="/Jaydeep_Jogdand_Software_Developer.pdf"
               download="Jaydeep_Jogdand_Software_Developer.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 transition-colors shadow-xs"
             >
               <Download size={14} />
               Download PDF

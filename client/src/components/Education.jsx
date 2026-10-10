@@ -10,34 +10,32 @@ export const Education = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <GraduationCap size={14} />
-            <span>Education</span>
+        <div className="mb-12 max-w-2xl">
+          <div className="text-xs font-mono font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">
+            06 / Education
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
             Academic Background
           </h2>
-          <div className="w-16 h-1 bg-cyan-500 rounded-full mt-3 mb-4" />
-          <p className="text-slate-600 dark:text-slate-400 max-w-xl text-sm sm:text-base">
-            My formal engineering qualifications and academic milestones.
+          <p className="text-slate-600 dark:text-slate-400 text-base mt-2">
+            Formal engineering qualifications and foundational computer science education.
           </p>
         </div>
 
         {/* Education Timeline */}
-        <div className="max-w-3xl mx-auto space-y-5">
+        <div className="max-w-3xl space-y-4">
           {education.map((item, idx) => (
             <div
               key={idx}
-              className="glass-card p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-all border border-slate-200/80 dark:border-slate-800"
+              className="surface-card p-6 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:border-slate-300 dark:hover:border-slate-700"
             >
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+              <div className="space-y-1.5">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white">
                     {item.degree}
                   </h3>
                   {item.badge && (
-                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/80">
+                    <span className="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                       {item.badge}
                     </span>
                   )}
@@ -52,11 +50,11 @@ export const Education = () => {
                 </p>
               </div>
 
-              <div className="flex sm:flex-col sm:items-end justify-between items-center gap-1 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-slate-200 dark:border-slate-800">
-                <div className="text-sm sm:text-base font-bold font-mono text-cyan-600 dark:text-cyan-400">
+              <div className="flex sm:flex-col sm:items-end justify-between items-center gap-1.5 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-slate-200 dark:border-slate-800">
+                <div className="text-sm sm:text-base font-semibold font-mono text-slate-900 dark:text-slate-100">
                   {item.grade}
                 </div>
-                <div className="flex items-center gap-1 text-xs font-mono text-slate-400">
+                <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500 dark:text-slate-400">
                   <Calendar size={12} />
                   <span>{item.period}</span>
                 </div>

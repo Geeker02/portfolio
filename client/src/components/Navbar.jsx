@@ -55,33 +55,33 @@ export const Navbar = ({ onOpenResume }) => {
         {/* Brand Logo */}
         <a
           href="#hero"
-          className="flex items-center gap-2 group focus:outline-none"
+          className="flex items-center gap-2.5 group focus:outline-none"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-            <Code2 size={22} className="stroke-[2.5]" />
+          <div className="w-9 h-9 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm">
+            <Code2 size={19} className="stroke-[2.5]" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-base tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-500 transition-colors">
+            <span className="font-bold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
               Jaydeep Jogdand
             </span>
-            <span className="text-[11px] font-mono font-medium text-cyan-600 dark:text-cyan-400">
+            <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
               Software Developer
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 dark:bg-slate-800/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200/60 dark:border-slate-700/60">
+        <nav className="hidden md:flex items-center gap-1 bg-slate-200/50 dark:bg-[#111622] px-2.5 py-1.5 rounded-full border border-slate-200 dark:border-slate-800">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
               <a
                 key={link.label}
                 href={link.href}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150 ${
                   isActive
-                    ? 'bg-cyan-500 text-white shadow-sm shadow-cyan-500/30'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60'
                 }`}
               >
                 {link.label}
@@ -91,13 +91,13 @@ export const Navbar = ({ onOpenResume }) => {
         </nav>
 
         {/* Action Controls (Resume, Theme Toggle, Mobile Menu) */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           {/* Resume CTA */}
           <button
             onClick={onOpenResume}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg bg-cyan-500 hover:bg-cyan-600 text-white shadow-md shadow-cyan-500/25 transition-all hover:shadow-cyan-500/40"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 border border-slate-900 dark:border-white transition-all shadow-sm cursor-pointer"
           >
-            <FileText size={15} />
+            <FileText size={14} />
             <span>Resume</span>
           </button>
 
